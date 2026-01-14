@@ -1,5 +1,10 @@
 import { IsString } from 'class-validator'
 
+enum Soldjer{
+    soldjer = "soldjer",
+    comand = "comander"
+}
+
 export class CreateUserDto {
 
     @IsString()
@@ -12,5 +17,5 @@ export class CreateUserDto {
     password: string
 
     @IsString()
-    role: string;
+    role: Soldjer
 }     

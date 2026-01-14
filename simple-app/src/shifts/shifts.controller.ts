@@ -2,6 +2,9 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, 
 import { ShiftService } from './shift.service';
 import { CreateShiftDto } from './create-shift.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { RolesGuard } from 'src/role/role.gurd';
+import { Roles } from 'src/role/role.decorator';
+import { Role } from 'src/role/role.enum';
 
 @Controller('shifts')
 export class ShiftsController {
@@ -13,6 +16,8 @@ export class ShiftsController {
         return await this.shiftService.register(shift)
     }
 
+    @Roles(Role.comander)
+    @UseGuards(RolesGuard)
     @UseGuards(AuthGuard)
     @Get()
     getAll() {
