@@ -18,9 +18,12 @@ export class AuthService {
   ): Promise<{ access_token: string }>{
     const data = await this.usersService.findOne(Number(id))
     const user = data?.dataValues
+    
     if(user?.password && !await bcrypt.compare(password,user.password)){
           throw new Error("password not true")
     }
+    console.log(user);
+    
     if (user?.role !== role) {
       throw new UnauthorizedException();
     }

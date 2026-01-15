@@ -1,6 +1,6 @@
-import { IsString } from 'class-validator'
+import { IsInt, IsString } from 'class-validator'
 
-enum Soldjer{
+export enum Soldjer{
     soldjer = "soldjer",
     comand = "comander"
 }
